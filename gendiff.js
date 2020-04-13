@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const fs = require('fs');
 const { program } = require('commander');
 
 program
@@ -9,8 +10,16 @@ program
   .option('-f, --format [type]', 'output format')
   .arguments('<firstConfig> <secondConfig>')
   .action(function (firstConfig, secondConfig) {
-    console.log('*???*')
+    console.log(firstConfig, secondConfig)
   })
   .parse(process.argv);
-
-console.log('Hello, World!');
+/*
+ .action(function (firstConfig, secondConfig) {
+    fs.readFile(firstConfig, function (err, data) {
+        if (err) {
+           return console.error(err);
+        }
+        console.log("Asynchronous read: " + data.toString());
+     });
+  })
+  */
