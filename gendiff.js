@@ -9,17 +9,9 @@ program
   .helpOption('-h, --help', 'output usage information')
   .option('-f, --format [type]', 'output format')
   .arguments('<firstConfig> <secondConfig>')
-  .action(function (firstConfig, secondConfig) {
-    console.log(firstConfig, secondConfig)
-  })
+  .action(function (pathToFile2, pathToFile1) {
+     const object1 = JSON.parse(fs.readFileSync(pathToFile1, 'utf8'));
+     const object2 = JSON.parse(fs.readFileSync(pathToFile2, 'utf8'));
+     console.log()
+   })
   .parse(process.argv);
-/*
- .action(function (firstConfig, secondConfig) {
-    fs.readFile(firstConfig, function (err, data) {
-        if (err) {
-           return console.error(err);
-        }
-        console.log("Asynchronous read: " + data.toString());
-     });
-  })
-  */
