@@ -3,4 +3,4 @@
 ![Node.js CI](https://github.com/patapiks/frontend-project-lvl2/workflows/Node.js%20CI/badge.svg)  
 # Project number two  
   
-Example: [https://asciinema.org/a/nQ72eBKg5isITOJm2XhMAWcaN]  
+File comparison example : [asciinema] (https://asciinema.org/a/nQ72eBKg5isITOJm2XhMAWcaN)  
