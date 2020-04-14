@@ -10,7 +10,7 @@ build:
 	rm -rf dist
 	npm run build
 run:
-	npx babel-node 'src/bin/gendiff.js' src/after.json src/before.json
+	npx babel-node 'src/bin/gendiff.js' src/before.json src/after.json
 
 # ** Configuration **
 
