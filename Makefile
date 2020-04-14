@@ -5,7 +5,7 @@ start:
 publish:
 	npm publish --dry-run
 lint:
-	npx eslint .
+	npx eslint --ignore-path .gitignore .
 build:
 	rm -rf dist
 	npm run build
