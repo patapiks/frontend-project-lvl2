@@ -2,7 +2,10 @@
   "name": "frontend-project-lvl2",
   "version": "1.0.0",
   "description": "",
-  "main": "src/bin/gendiff",
+  "main": "dist/index.js",
+  "bin": {
+    "genDiff": "dist/bin/gendiff.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel-node": "babel-node",
@@ -13,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/patapiks/frontend-project-lvl2.git"
   },
-  "author": "",
+  "author": "Sergey Goev",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/patapiks/frontend-project-lvl2/issues"
