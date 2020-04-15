@@ -9,6 +9,10 @@ lint:
 build:
 	rm -rf dist
 	npm run build
+test:
+	npm test
+test-coverage:
+	npm test -- --coverage
 run:
 	npx babel-node 'src/bin/gendiff.js' src/before.json src/after.json
 

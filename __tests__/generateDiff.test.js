@@ -10,4 +10,9 @@ test('generateDiff_test', () => {
   - follow: false
   + verbose: true
 }`);
+  expect(generateDiff(`${__dirname}/fixtures/one.json`, `${__dirname}/fixtures/two.json`))
+    .toEqual(`{
+  - host: hexlet.io
+  + rename: hexlet.io
+}`);
 });
