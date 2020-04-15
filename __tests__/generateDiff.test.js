@@ -1,7 +1,7 @@
 import generateDiff from '../src/index';
 
 test('generateDiff_test', () => {
-  expect(generateDiff('src/before.json', 'src/after.json'))
+  expect(generateDiff(`${__dirname}/fixtures/before.json`, `${__dirname}/fixtures/after.json`))
     .toEqual(`{
     host: hexlet.io
   + timeout: 20
