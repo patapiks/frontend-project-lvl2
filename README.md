@@ -3,7 +3,7 @@
 ![Node.js CI](https://github.com/patapiks/frontend-project-lvl2/workflows/Node.js%20CI/badge.svg)  
 # Generate Difference of two files  
   
-### Example file comparison:  
+Example file comparison:  
 
 * [asciinema](https://asciinema.org/a/nQ72eBKg5isITOJm2XhMAWcaN) - JSON  
 * [asciinema](https://asciinema.org/a/tG22uzs6bflS3OnQOovPAHkiL) - YAML  
