@@ -5,3 +5,4 @@
   
 JSON file comparison example: [asciinema](https://asciinema.org/a/nQ72eBKg5isITOJm2XhMAWcaN)  
 YMAL file comparison example: [asciinema](https://asciinema.org/a/tG22uzs6bflS3OnQOovPAHkiL)  
+INI  file comparison example: [asciinema](https://asciinema.org/a/xkSUmBdzaVZhCzNxjlDtMNfw0)  
