@@ -1,4 +1,4 @@
-import parse from './parse';
+import parse from './parsers';
 
 export default (pathToFile1, pathToFile2) => {
   const temp = ['{'];

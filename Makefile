@@ -1,7 +1,5 @@
 install:
 	npm install
-start:
-	node src/bin/brain-even.js
 publish:
 	npm publish --dry-run
 lint:
@@ -13,8 +11,6 @@ test:
 	npm test
 test-coverage:
 	npm test -- --coverage
-run:
-	npx babel-node 'src/bin/gendiff.js' src/before.yml src/after.yml
 
 # ** Configuration **
 

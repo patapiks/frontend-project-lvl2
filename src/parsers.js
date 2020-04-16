@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-
 export default (pathToFile) => {
   const format = path.extname(pathToFile);
   const file = fs.readFileSync(pathToFile, 'utf8');

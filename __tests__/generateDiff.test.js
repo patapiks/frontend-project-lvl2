@@ -10,8 +10,6 @@ test('generateDiff_test', () => {
   - follow: false
   + verbose: true
 }`);
-  expect(generateDiff(`${__dirname}/fixtures/one.json`, `${__dirname}/fixtures/two.json`))
-    .toMatch('+ rename: hexlet.io');
   expect(generateDiff(`${__dirname}/fixtures/before.yml`, `${__dirname}/fixtures/after.yml`))
     .toEqual(`{
     host: hexlet.io
