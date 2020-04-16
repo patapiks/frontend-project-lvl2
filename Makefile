@@ -14,7 +14,7 @@ test:
 test-coverage:
 	npm test -- --coverage
 run:
-	npx babel-node 'src/bin/gendiff.js' src/before.json src/after.json
+	npx babel-node 'src/bin/gendiff.js' src/before.yml src/after.yml
 
 # ** Configuration **
 
