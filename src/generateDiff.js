@@ -1,9 +1,9 @@
-const fs = require('fs');
+import parse from './parse';
 
 export default (pathToFile1, pathToFile2) => {
   const temp = ['{'];
-  const object1 = JSON.parse(fs.readFileSync(pathToFile1, 'utf8'));
-  const object2 = JSON.parse(fs.readFileSync(pathToFile2, 'utf8'));
+  const object1 = parse(pathToFile1);
+  const object2 = parse(pathToFile2);
 
   Object.keys(object1).forEach((key) => {
     if (Object.prototype.hasOwnProperty.call(object2, key)

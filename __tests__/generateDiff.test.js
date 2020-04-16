@@ -12,4 +12,13 @@ test('generateDiff_test', () => {
 }`);
   expect(generateDiff(`${__dirname}/fixtures/one.json`, `${__dirname}/fixtures/two.json`))
     .toMatch('+ rename: hexlet.io');
+  expect(generateDiff(`${__dirname}/fixtures/before.yml`, `${__dirname}/fixtures/after.yml`))
+    .toEqual(`{
+    host: hexlet.io
+  + timeout: 20
+  - timeout: 50
+  - proxy: 123.234.53.22
+  - follow: false
+  + verbose: true
+}`);
 });
