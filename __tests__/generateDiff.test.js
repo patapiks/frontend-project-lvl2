@@ -7,17 +7,6 @@ test.each([
 ])('GenerateDifference_test_1', (arg) => {
   expect(generateDiff(`${__dirname}/__fixtures__/before.${arg}`, `${__dirname}/__fixtures__/after.${arg}`))
     .toEqual(`{
-    host: hexlet.io
-  - timeout: 50
-  + timeout: 20
-  - proxy: 123.234.53.22
-  - follow: false
-  + verbose: true
-}`);
-});
-
-test('GenerateDifference_test_2', () => {
-  expect(generateDiff(`${__dirname}/__fixtures__/before1.json`, `${__dirname}/__fixtures__/after1.json`)).toEqual(`{
     common: {
         setting1: Value 1
       - setting2: 200
