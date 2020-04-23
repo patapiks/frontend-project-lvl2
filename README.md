@@ -8,3 +8,11 @@ Example file comparison:
 * [asciinema](https://asciinema.org/a/nQ72eBKg5isITOJm2XhMAWcaN) - JSON  
 * [asciinema](https://asciinema.org/a/tG22uzs6bflS3OnQOovPAHkiL) - YAML  
 * [asciinema](https://asciinema.org/a/xkSUmBdzaVZhCzNxjlDtMNfw0) - INI  
+  
+Example file comparison recursive:  
+  
+* [asciinema](https://asciinema.org/a/DfTQMEbKXLCXaTDzhFAn6OlAq)  
+  
+Example file comparison in format plain:  
+  
+* [asciinema](https://asciinema.org/a/XsnIviVXvKCABL2lDQFIyVaIX)  

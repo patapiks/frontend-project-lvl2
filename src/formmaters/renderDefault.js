@@ -1,4 +1,4 @@
-import stringify from './stringify';
+import stringify from '../stringify';
 
 const render = (tree, i = 1) => {
   const result = tree.reduce((acc, currentValue) => {

@@ -1,14 +1,17 @@
 import parse from './parsers';
-import render from './render';
+import renderDefault from './formmaters/renderDefault';
+import renderPlain from './formmaters/renderPlain';
 import buildingTreeDiff from './buildingTreeDiff';
 
-export default (pathToFile1, pathToFile2) => {
+export default (pathToFile1, pathToFile2, format) => {
   const object1 = parse(pathToFile1);
   const object2 = parse(pathToFile2);
 
   const tree = buildingTreeDiff(object1, object2);
-  const diff = render(tree);
-
-  console.log(diff);
-  return diff;
+  switch (format) {
+    case 'PLAIN':
+      return renderPlain(tree);
+    default:
+      return renderDefault(tree);
+  }
 };
