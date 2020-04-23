@@ -1,35 +1,50 @@
+import _ from 'lodash';
+
 const buildingTreeDiff = (object1, object2) => {
-  const result = ['{'];
-
+  const tree = [];
   Object.keys(object1).forEach((key) => {
-    if (Object.prototype.hasOwnProperty.call(object2, key)
-    && typeof (object1[key]) === 'object'
-    && typeof (object2[key]) === 'object') return result.push(`  ${key}: `, buildingTreeDiff(object1[key], object2[key]));
+    const result = {};
+    result.name = key;
 
-    if (Object.prototype.hasOwnProperty.call(object2, key)
-    && object2[key] === object1[key]) result.push(`  ${key}: ${object1[key]}`);
-
-    else if (Object.prototype.hasOwnProperty.call(object2, key)
+    // CHECK STATUS
+    if (_.has(object2, key)
     && object1[key] !== object2[key]) {
-      if (typeof (object1[key]) !== 'object') result.push(`- ${key}: ${object1[key]}`);
-      else result.push(`- ${key}: `, buildingTreeDiff(object1[key], object1[key]));
-      if (typeof (object2[key]) !== 'object') result.push(`+ ${key}: ${object2[key]}`);
-      else result.push(`+ ${key}: `, buildingTreeDiff(object2[key], object2[key]));
-    } else if (typeof (object1[key]) !== 'object') result.push(`- ${key}: ${object1[key]}`);
-    else result.push(`- ${key}: `, buildingTreeDiff(object1[key], object1[key]));
-    return result;
+      result.status = 'changed';
+      result.beforeValue = object1[key];
+      result.afterValue = object2[key];
+    }
+    if (_.has(object2, key)
+    && object1[key] === object2[key]) {
+      result.status = 'unchanged';
+      result.value = object1[key];
+    }
+    if (!_.has(object2, key)) {
+      result.status = 'deleted';
+      result.value = object1[key];
+    }
+
+    // ADD CHILDREN
+    if (_.has(object2, key)
+    && typeof (object1[key]) === 'object'
+    && typeof (object2[key]) === 'object') {
+      result.status = 'changedObj';
+      result.children = buildingTreeDiff(object1[key], object2[key]);
+    }
+    return tree.push(result);
   });
 
   Object.keys(object2).forEach((key) => {
-    if (!Object.prototype.hasOwnProperty.call(object1, key)
-    && typeof (object2[key]) === 'object') {
-      result.push(`+ ${key}: `, buildingTreeDiff(object2[key], object2[key]));
-    } else if (!Object.prototype.hasOwnProperty.call(object1, key)) {
-      result.push(`+ ${key}: ${object2[key]}`);
+    const result = {};
+
+    // CHECK ADDED
+    if (!_.has(object1, key)) {
+      result.name = key;
+      result.status = 'added';
+      result.value = object2[key];
     }
+    return tree.push(result);
   });
 
-  result.push('}');
-  return result;
+  return tree;
 };
 export default buildingTreeDiff;
