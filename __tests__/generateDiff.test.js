@@ -1,5 +1,7 @@
 import generateDiff from '../src/index';
 
+const fs = require('fs');
+
 test.each([
   ['yml'],
   ['ini'],
@@ -48,7 +50,8 @@ test.each([
   ['json'],
 ])('GenerateDifference_test_2', (arg) => {
   expect(generateDiff(`${__dirname}/__fixtures__/before.${arg}`, `${__dirname}/__fixtures__/after.${arg}`, 'PLAIN'))
-    .toEqual(`Propperty 'common.setting2' was deleted
+    .toEqual(`
+Propperty 'common.setting2' was deleted
 Propperty 'common.setting3' was changed from true to [complex value]
 Propperty 'common.setting6.ops' was added with value: 'vops'
 Propperty 'common.follow' was added with value: false
@@ -57,6 +60,14 @@ Propperty 'common.setting5' was added with value: [complex value]
 Propperty 'group1.baz' was changed from [complex value] to 'bars'
 Propperty 'group1.nest' was changed from [complex value] to 'str'
 Propperty 'group2' was deleted
-Propperty 'group3' was added with value: [complex value]
-`);
+Propperty 'group3' was added with value: [complex value]`);
+});
+
+test.each([
+  ['yml'],
+  ['ini'],
+  ['json'],
+])('GenerateDifference_test_3', (arg) => {
+  expect(generateDiff(`${__dirname}/__fixtures__/before.${arg}`, `${__dirname}/__fixtures__/after.${arg}`, 'JSON'))
+    .toEqual(fs.readFileSync(`${__dirname}/__fixtures__/exampleJsonFormat.json`, 'utf8'));
 });

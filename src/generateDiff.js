@@ -1,6 +1,7 @@
 import parse from './parsers';
 import renderDefault from './formmaters/renderDefault';
 import renderPlain from './formmaters/renderPlain';
+import renderJson from './formmaters/renderJson';
 import buildingTreeDiff from './buildingTreeDiff';
 
 export default (pathToFile1, pathToFile2, format) => {
@@ -11,6 +12,8 @@ export default (pathToFile1, pathToFile2, format) => {
   switch (format) {
     case 'PLAIN':
       return renderPlain(tree);
+    case 'JSON':
+      return renderJson(tree);
     default:
       return renderDefault(tree);
   }
