@@ -32,7 +32,7 @@ const render = (tree, i = 1) => {
         accum.push(`\n${'  '.repeat(i)}- ${name}: ${stringify(beforeValue, i)}`);
         break;
       case 'changedObj':
-        accum.push(`\n  ${'  '.repeat(i)}${name}: ${render(children, i + 2)}`);
+        accum.push(`\n${'  '.repeat(i)}  ${name}: ${render(children, i + 2)}`);
         break;
       default:
         break;
