@@ -1,10 +1,13 @@
-const stringify = (obj, i) => {
-  const result = ['{'];
-  Object.keys(obj).forEach((key) => {
-    result.push(`${'  '.repeat(i + 3)}${key}: ${obj[key]}`);
-  });
-  result.push(`${'  '.repeat(i + 1)}}`);
-  return result.join('\n');
+const stringify = (value, i) => {
+  if (typeof (value) === 'object') {
+    const result = ['{'];
+    Object.keys(value).forEach((key) => {
+      result.push(`${'  '.repeat(i + 3)}${key}: ${value[key]}`);
+    });
+    result.push(`${'  '.repeat(i + 1)}}`);
+    return result.join('\n');
+  }
+  return value;
 };
 
 const render = (tree, i = 1) => {
@@ -16,27 +19,17 @@ const render = (tree, i = 1) => {
 
     switch (status) {
       case 'deleted':
-        accum.push(typeof (value) === 'object'
-          ? `\n${'  '.repeat(i)}- ${name}: ${stringify(value, i)}`
-          : `\n${'  '.repeat(i)}- ${name}: ${value}`);
+        accum.push(`\n${'  '.repeat(i)}- ${name}: ${stringify(value, i)}`);
         break;
       case 'added':
-        accum.push(typeof (value) === 'object'
-          ? `\n${'  '.repeat(i)}+ ${name}: ${stringify(value, i)}`
-          : `\n${'  '.repeat(i)}+ ${name}: ${value}`);
+        accum.push(`\n${'  '.repeat(i)}+ ${name}: ${stringify(value, i)}`);
         break;
       case 'unchanged':
-        accum.push(typeof (value) === 'object'
-          ? `\n${'  '.repeat(i)}  ${name}: ${stringify(value, i)}`
-          : `\n${'  '.repeat(i)}  ${name}: ${value}`);
+        accum.push(`\n${'  '.repeat(i)}  ${name}: ${stringify(value, i)}`);
         break;
       case 'changed':
-        accum.push(typeof (afterValue) === 'object'
-          ? `\n${'  '.repeat(i)}+ ${name}: ${stringify(afterValue, i)}`
-          : `\n${'  '.repeat(i)}+ ${name}: ${afterValue}`);
-        accum.push(typeof (beforeValue) === 'object'
-          ? `\n${'  '.repeat(i)}- ${name}: ${stringify(beforeValue, i)}`
-          : `\n${'  '.repeat(i)}- ${name}: ${beforeValue}`);
+        accum.push(`\n${'  '.repeat(i)}+ ${name}: ${stringify(afterValue, i)}`);
+        accum.push(`\n${'  '.repeat(i)}- ${name}: ${stringify(beforeValue, i)}`);
         break;
       case 'changedObj':
         accum.push(`\n  ${'  '.repeat(i)}${name}: ${render(children, i + 2)}`);
