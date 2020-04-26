@@ -13,17 +13,17 @@ const render = (tree, parentsName = '') => {
 
     switch (status) {
       case 'deleted':
-        accum.push(`\nPropperty '${parentsName}${name}' was deleted`);
+        accum.push(`Propperty '${parentsName}${name}' was deleted`);
         break;
       case 'added':
         accum.push(typeof (value) === 'object'
-          ? `\nPropperty '${parentsName}${name}' was added with value: [complex value]`
-          : `\nPropperty '${parentsName}${name}' was added with value: ${stringify(value)}`);
+          ? `Propperty '${parentsName}${name}' was added with value: [complex value]`
+          : `Propperty '${parentsName}${name}' was added with value: ${stringify(value)}`);
         break;
       case 'changed':
         accum.push(typeof (afterValue) === 'object'
-          ? `\nPropperty '${parentsName}${name}' was changed from ${stringify(beforeValue)} to [complex value]`
-          : `\nPropperty '${parentsName}${name}' was changed from [complex value] to ${stringify(afterValue)}`);
+          ? `Propperty '${parentsName}${name}' was changed from ${stringify(beforeValue)} to [complex value]`
+          : `Propperty '${parentsName}${name}' was changed from [complex value] to ${stringify(afterValue)}`);
         break;
       case 'changedObj':
         path.push(`${parentsName}${name}.`);
@@ -34,6 +34,6 @@ const render = (tree, parentsName = '') => {
     }
     return accum;
   }, []);
-  return result.join('');
+  return result.join('\n');
 };
 export default render;

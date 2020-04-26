@@ -49,8 +49,7 @@ test.each([
   ['json'],
 ])('GenerateDifference_test_2', (arg) => {
   expect(generateDiff(`${__dirname}/__fixtures__/before.${arg}`, `${__dirname}/__fixtures__/after.${arg}`, 'PLAIN'))
-    .toEqual(`
-Propperty 'common.setting2' was deleted
+    .toEqual(`Propperty 'common.setting2' was deleted
 Propperty 'common.setting3' was changed from true to [complex value]
 Propperty 'common.setting6.ops' was added with value: 'vops'
 Propperty 'common.follow' was added with value: false
