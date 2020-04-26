@@ -1,10 +1,10 @@
 const stringify = (obj, i) => {
   const result = ['{'];
   Object.keys(obj).forEach((key) => {
-    result.push(`\n${'  '.repeat(i + 3)}${key}: ${obj[key]}`);
+    result.push(`${'  '.repeat(i + 3)}${key}: ${obj[key]}`);
   });
-  result.push(`\n  ${'  '.repeat(i)}}`);
-  return result.join('');
+  result.push(`${'  '.repeat(i + 1)}}`);
+  return result.join('\n');
 };
 
 const render = (tree, i = 1) => {
