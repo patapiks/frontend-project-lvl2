@@ -1,14 +1,13 @@
-const fs = require('fs');
-const ini = require('ini');
-const path = require('path');
-const yaml = require('js-yaml');
+import fs from 'fs';
+import ini from 'ini';
+import path from 'path';
+import yaml from 'js-yaml';
 
 export default (pathToFile) => {
   const format = path.extname(pathToFile);
   const file = fs.readFileSync(pathToFile, 'utf8');
-  let result;
-  if (format === '.yml') result = yaml.load(file);
-  else if (format === '.json') result = JSON.parse(file);
-  else if (format === '.ini') result = ini.parse(file);
-  return result;
+  if (format === '.yml') return yaml.load(file);
+  if (format === '.json') return JSON.parse(file);
+  if (format === '.ini') return ini.parse(file);
+  return null;
 };

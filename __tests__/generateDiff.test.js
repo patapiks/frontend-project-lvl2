@@ -1,6 +1,5 @@
+import fs from 'fs';
 import generateDiff from '../src/index';
-
-const fs = require('fs');
 
 test.each([
   ['yml'],

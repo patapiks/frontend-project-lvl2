@@ -13,7 +13,7 @@ export default (pathToFile1, pathToFile2, format) => {
     case 'PLAIN':
       return renderPlain(tree);
     case 'JSON':
-      return renderJson(tree);
+      return JSON.stringify(renderJson(tree));
     default:
       return renderDefault(tree);
   }

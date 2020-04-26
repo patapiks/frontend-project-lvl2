@@ -1,45 +1,52 @@
-import stringify from '../stringify';
+const stringify = (obj, i) => {
+  const result = ['{'];
+  Object.keys(obj).forEach((key) => {
+    result.push(`\n${'  '.repeat(i + 3)}${key}: ${obj[key]}`);
+  });
+  result.push(`\n  ${'  '.repeat(i)}}`);
+  return result.join('');
+};
 
 const render = (tree, i = 1) => {
   const result = tree.reduce((acc, currentValue) => {
     const {
       name, value, beforeValue, afterValue, status, children,
     } = currentValue;
-    let accum = acc;
+    const accum = acc;
 
     switch (status) {
       case 'deleted':
-        accum += typeof (value) === 'object'
+        accum.push(typeof (value) === 'object'
           ? `\n${'  '.repeat(i)}- ${name}: ${stringify(value, i)}`
-          : `\n${'  '.repeat(i)}- ${name}: ${value}`;
+          : `\n${'  '.repeat(i)}- ${name}: ${value}`);
         break;
       case 'added':
-        accum += typeof (value) === 'object'
+        accum.push(typeof (value) === 'object'
           ? `\n${'  '.repeat(i)}+ ${name}: ${stringify(value, i)}`
-          : `\n${'  '.repeat(i)}+ ${name}: ${value}`;
+          : `\n${'  '.repeat(i)}+ ${name}: ${value}`);
         break;
       case 'unchanged':
-        accum += typeof (value) === 'object'
+        accum.push(typeof (value) === 'object'
           ? `\n${'  '.repeat(i)}  ${name}: ${stringify(value, i)}`
-          : `\n${'  '.repeat(i)}  ${name}: ${value}`;
+          : `\n${'  '.repeat(i)}  ${name}: ${value}`);
         break;
       case 'changed':
-        accum += typeof (afterValue) === 'object'
+        accum.push(typeof (afterValue) === 'object'
           ? `\n${'  '.repeat(i)}+ ${name}: ${stringify(afterValue, i)}`
-          : `\n${'  '.repeat(i)}+ ${name}: ${afterValue}`;
-        accum += typeof (beforeValue) === 'object'
+          : `\n${'  '.repeat(i)}+ ${name}: ${afterValue}`);
+        accum.push(typeof (beforeValue) === 'object'
           ? `\n${'  '.repeat(i)}- ${name}: ${stringify(beforeValue, i)}`
-          : `\n${'  '.repeat(i)}- ${name}: ${beforeValue}`;
+          : `\n${'  '.repeat(i)}- ${name}: ${beforeValue}`);
         break;
       case 'changedObj':
-        accum += `\n  ${'  '.repeat(i)}${name}: ${render(children, i + 2)}`;
+        accum.push(`\n  ${'  '.repeat(i)}${name}: ${render(children, i + 2)}`);
         break;
       default:
         break;
     }
     return accum;
-  }, '{');
+  }, ['{']);
 
-  return `${result}\n${'  '.repeat(i - 1)}}`;
+  return `${result.join('')}\n${'  '.repeat(i - 1)}}`;
 };
 export default render;

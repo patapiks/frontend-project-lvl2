@@ -16,3 +16,7 @@ Example file comparison recursive:
 Example file comparison in format plain:  
   
 * [asciinema](https://asciinema.org/a/XsnIviVXvKCABL2lDQFIyVaIX)  
+  
+Example file comparison in format JSON:  
+
+* [asciinema](https://asciinema.org/a/V4dthebslpMx98Jcsa0WDIjVT)  
