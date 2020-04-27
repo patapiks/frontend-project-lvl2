@@ -1,12 +1,13 @@
 import fs from 'fs';
 import generateDiff from '../src/index';
+import getFixturePath from '../src/getFixturePath';
 
 test.each([
   ['yml'],
   ['ini'],
   ['json'],
 ])('GenerateDifference_test_1', (arg) => {
-  expect(generateDiff(`${__dirname}/__fixtures__/before.${arg}`, `${__dirname}/__fixtures__/after.${arg}`))
+  expect(generateDiff(getFixturePath(`before.${arg}`), getFixturePath(`after.${arg}`)))
     .toEqual(`{
     common: {
         setting1: Value 1
@@ -48,7 +49,7 @@ test.each([
   ['ini'],
   ['json'],
 ])('GenerateDifference_test_2', (arg) => {
-  expect(generateDiff(`${__dirname}/__fixtures__/before.${arg}`, `${__dirname}/__fixtures__/after.${arg}`, 'PLAIN'))
+  expect(generateDiff(getFixturePath(`before.${arg}`), getFixturePath(`after.${arg}`), 'PLAIN'))
     .toEqual(`Propperty 'common.setting2' was deleted
 Propperty 'common.setting3' was changed from true to [complex value]
 Propperty 'common.setting6.ops' was added with value: 'vops'
@@ -66,6 +67,6 @@ test.each([
   ['ini'],
   ['json'],
 ])('GenerateDifference_test_3', (arg) => {
-  expect(generateDiff(`${__dirname}/__fixtures__/before.${arg}`, `${__dirname}/__fixtures__/after.${arg}`, 'JSON'))
-    .toEqual(fs.readFileSync(`${__dirname}/__fixtures__/exampleJsonFormat.json`, 'utf8'));
+  expect(generateDiff(getFixturePath(`before.${arg}`), getFixturePath(`after.${arg}`), 'JSON'))
+    .toEqual(fs.readFileSync(getFixturePath('exampleJsonFormat.json'), 'utf8'));
 });
