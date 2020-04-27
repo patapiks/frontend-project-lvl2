@@ -55,7 +55,7 @@ Propperty 'common.setting6.ops' was added with value: 'vops'
 Propperty 'common.follow' was added with value: false
 Propperty 'common.setting4' was added with value: 'blah blah'
 Propperty 'common.setting5' was added with value: [complex value]
-Propperty 'group1.baz' was changed from [complex value] to 'bars'
+Propperty 'group1.baz' was changed from 'bas' to 'bars'
 Propperty 'group1.nest' was changed from [complex value] to 'str'
 Propperty 'group2' was deleted
 Propperty 'group3' was added with value: [complex value]`);
