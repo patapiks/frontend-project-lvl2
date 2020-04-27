@@ -33,7 +33,6 @@ const render = (tree, i = 1) => {
         break;
       default:
         accum.push(`\n${'  '.repeat(i)}  ${name}: ${render(children, i + 2)}`);
-        break;
     }
     return accum;
   }, ['{']);
