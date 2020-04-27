@@ -41,8 +41,9 @@ const buildingTreeDiff = (object1, object2) => {
       result.name = key;
       result.status = 'added';
       result.value = object2[key];
+      return tree.push(result);
     }
-    return tree.push(result);
+    return tree;
   });
 
   return tree;

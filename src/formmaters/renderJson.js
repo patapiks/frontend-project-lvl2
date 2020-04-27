@@ -9,19 +9,15 @@ const render = (tree) => {
       case 'changedObj':
         accum[name] = render(children);
         break;
-      case 'added':
-      case 'deleted':
-      case 'unchanged':
-        accum[name] = {
-          status, value,
-        };
-        break;
       case 'changed':
         accum[name] = {
           status, beforeValue, afterValue,
         };
         break;
       default:
+        accum[name] = {
+          status, value,
+        };
         break;
     }
     return accum;
