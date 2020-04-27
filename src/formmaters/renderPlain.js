@@ -27,7 +27,6 @@ const render = (tree, parentsName = '') => {
         accum.push(render(children, path.join('.')));
         break;
       default:
-        break;
     }
     return accum;
   }, []);
