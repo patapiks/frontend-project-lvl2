@@ -11,7 +11,6 @@ const render = (tree, parentsName = '') => {
     } = currentValue;
     const accum = acc;
     const path = [];
-
     switch (status) {
       case 'deleted':
         accum.push(`Propperty '${parentsName}${name}' was deleted`);
