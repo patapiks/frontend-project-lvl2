@@ -3,7 +3,7 @@ install:
 publish:
 	npm publish --dry-run
 lint:
-	npx eslint --ignore-path .gitignore .
+	npx eslint .gitignore .
 build:
 	rm -rf dist
 	npm run build
