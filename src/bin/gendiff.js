@@ -13,6 +13,5 @@ program
   .action((pathToFile1, pathToFile2) => {
     const result = generateDiff(pathToFile1, pathToFile2, program.format);
     console.log(result);
-    return result;
   })
   .parse(process.argv);

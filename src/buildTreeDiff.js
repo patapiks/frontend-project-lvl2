@@ -1,12 +1,12 @@
 import _ from 'lodash';
 
-const buildingTreeDiff = (object1, object2) => {
+const buildTreeDiff = (object1, object2) => {
   const tree = [];
   Object.keys(object1).forEach((key) => {
     if (_.has(object2, key)
     && typeof (object1[key]) === 'object'
     && typeof (object2[key]) === 'object') {
-      return tree.push({ name: key, status: 'changedObj', children: buildingTreeDiff(object1[key], object2[key]) });
+      return tree.push({ name: key, status: 'changedObj', children: buildTreeDiff(object1[key], object2[key]) });
     }
     if (_.has(object2, key)
     && object1[key] !== object2[key]) {
@@ -29,4 +29,4 @@ const buildingTreeDiff = (object1, object2) => {
 
   return tree;
 };
-export default buildingTreeDiff;
+export default buildTreeDiff;

@@ -3,7 +3,7 @@ import parse from './parsers';
 import renderDefault from './formmaters/renderDefault';
 import renderPlain from './formmaters/renderPlain';
 import renderJson from './formmaters/renderJson';
-import buildingTreeDiff from './buildingTreeDiff';
+import buildTreeDiff from './buildTreeDiff';
 
 export default (pathToFile1, pathToFile2, format) => {
   const file1 = fs.readFileSync(pathToFile1, 'utf8');
@@ -11,7 +11,7 @@ export default (pathToFile1, pathToFile2, format) => {
   const object1 = parse(file1, pathToFile1);
   const object2 = parse(file2, pathToFile2);
 
-  const tree = buildingTreeDiff(object1, object2);
+  const tree = buildTreeDiff(object1, object2);
   switch (format) {
     case 'PLAIN':
       return renderPlain(tree);
