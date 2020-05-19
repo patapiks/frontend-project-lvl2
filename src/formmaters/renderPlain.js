@@ -5,31 +5,23 @@ const stringify = (value) => {
 };
 
 const render = (tree, parentsName = '') => {
-  const result = tree.reduce((acc, currentValue) => {
-    const {
-      name, value, beforeValue, afterValue, status, children,
-    } = currentValue;
-    const accum = acc;
-    const path = [];
+  const result = tree.filter((node) => node.status !== 'unchanged')
+    .flatMap((node) => {
+      const {
+        name, value, beforeValue, afterValue, status, children,
+      } = node;
 
-    switch (status) {
-      case 'deleted':
-        accum.push(`Propperty '${parentsName}${name}' was deleted`);
-        break;
-      case 'added':
-        accum.push(`Propperty '${parentsName}${name}' was added with value: ${stringify(value)}`);
-        break;
-      case 'changed':
-        accum.push(`Propperty '${parentsName}${name}' was changed from ${stringify(beforeValue)} to ${stringify(afterValue)}`);
-        break;
-      case 'changedObj':
-        path.push(`${parentsName}${name}.`);
-        accum.push(render(children, path.join('.')));
-        break;
-      default:
-    }
-    return accum;
-  }, []);
+      switch (status) {
+        case 'deleted':
+          return `Propperty '${parentsName}${name}' was deleted`;
+        case 'added':
+          return `Propperty '${parentsName}${name}' was added with value: ${stringify(value)}`;
+        case 'changed':
+          return `Propperty '${parentsName}${name}' was changed from ${stringify(beforeValue)} to ${stringify(afterValue)}`;
+        default:
+          return render(children, `${parentsName}${name}.`);
+      }
+    });
   return result.join('\n');
 };
 export default render;
