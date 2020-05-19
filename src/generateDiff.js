@@ -1,8 +1,6 @@
 import fs from 'fs';
 import parse from './parsers';
-import renderDefault from './formmaters/renderDefault';
-import renderPlain from './formmaters/renderPlain';
-import renderJson from './formmaters/renderJson';
+import { renderDefault, renderPlain, renderJson } from './formmaters/index';
 import buildTreeDiff from './buildTreeDiff';
 
 export default (pathToFile1, pathToFile2, format) => {
