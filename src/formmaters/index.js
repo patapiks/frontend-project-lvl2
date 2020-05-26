@@ -1,5 +1,5 @@
-import renderDefault from './renderDefault';
+import renderPretty from './renderPretty';
 import renderPlain from './renderPlain';
 import renderJson from './renderJson';
 
-export { renderDefault, renderPlain, renderJson };
+export { renderPretty, renderPlain, renderJson };

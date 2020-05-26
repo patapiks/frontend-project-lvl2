@@ -1,2 +1,1 @@
-const render = (tree) => JSON.stringify(tree);
-export default render;
+export default (tree) => JSON.stringify(tree);
