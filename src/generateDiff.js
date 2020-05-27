@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import parse from './parsers';
-import { renderPretty, renderPlain, renderJson } from './formmaters/index';
+import render from './formmaters/index';
 import buildTreeDiff from './buildTreeDiff';
 
 export default (pathToFile1, pathToFile2, format) => {
@@ -11,12 +11,6 @@ export default (pathToFile1, pathToFile2, format) => {
   const object2 = parse(data2, path.extname(pathToFile2));
 
   const tree = buildTreeDiff(object1, object2);
-  switch (format) {
-    case 'PLAIN':
-      return renderPlain(tree);
-    case 'JSON':
-      return renderJson(tree);
-    default:
-      return renderPretty(tree);
-  }
+  const result = render(tree, format);
+  return result;
 };

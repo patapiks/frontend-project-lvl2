@@ -18,8 +18,10 @@ const render = (tree, parentsName = '') => {
           return `Propperty '${parentsName}${name}' was added with value: ${stringify(value)}`;
         case 'changed':
           return `Propperty '${parentsName}${name}' was changed from ${stringify(beforeValue)} to ${stringify(afterValue)}`;
-        default:
+        case 'complexValue':
           return render(children, `${parentsName}${name}.`);
+        default:
+          throw new Error(`Unknown status: '${status}'!`);
       }
     });
   return result.join('\n');

@@ -21,8 +21,10 @@ const render = (tree, indentSize = 1) => {
         return `${'  '.repeat(indentSize)}  ${name}: ${stringify(value, indentSize)}`;
       case 'changed':
         return `${'  '.repeat(indentSize)}+ ${name}: ${stringify(afterValue, indentSize)}\n${'  '.repeat(indentSize)}- ${name}: ${stringify(beforeValue, indentSize)}`;
-      default:
+      case 'complexValue':
         return `${'  '.repeat(indentSize)}  ${name}: ${render(children, indentSize + 2)}`;
+      default:
+        throw new Error(`Unknown status: '${status}'!`);
     }
   });
 
