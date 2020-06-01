@@ -10,6 +10,6 @@ export default (data, type) => {
     case '.json':
       return JSON.parse(data);
     default:
-      return null;
+      throw new Error(`Unknown type: '${type}'!`);
   }
 };
