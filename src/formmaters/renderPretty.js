@@ -1,9 +1,9 @@
+import _ from 'lodash';
+
 const stringify = (value, indentSize) => {
-  if (typeof (value) === 'object') {
-    const result = Object.keys(value).map((key) => `${'  '.repeat(indentSize + 3)}${key}: ${value[key]}`);
-    return `{\n${result}\n${'  '.repeat(indentSize + 1)}}`;
-  }
-  return value;
+  if (!_.isObject(value)) return value;
+  const result = Object.keys(value).map((key) => `${'  '.repeat(indentSize + 3)}${key}: ${value[key]}`);
+  return `{\n${result}\n${'  '.repeat(indentSize + 1)}}`;
 };
 
 const render = (tree, indentSize = 1) => {
